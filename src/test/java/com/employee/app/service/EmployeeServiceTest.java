@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import com.employee.app.domain.Employee;
 import com.employee.app.domain.payload.EmployeePayload;
+import com.employee.app.utils.exception.EmployeeNotFoundException;
 
 class EmployeeServiceTest {
 	private EmployeeService employeeService;
@@ -44,6 +45,12 @@ class EmployeeServiceTest {
 	void findById() {
 		Employee employee = employeeService.findById(1);
 		assertNotNull(employee);
+	}
+
+	@Test
+	void findById_error() {
+		assertThrows(EmployeeNotFoundException.class,
+			() -> employeeService.findById(12));
 	}
 
 	@Test
