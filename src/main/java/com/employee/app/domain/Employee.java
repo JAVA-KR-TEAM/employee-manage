@@ -1,5 +1,6 @@
 package com.employee.app.domain;
 
+import com.employee.app.utils.format.Formatter;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -21,11 +22,11 @@ public class Employee {
 	}
 
 	public String mapIdAndName() {
-		return id + "      " + name;
+		return Formatter.print(id) + "\t\t" + name;
 	}
 
 	public String mapAllFields() {
-		return id + "     " + name + "   " + phoneNumber + "  " + grade + "   " + email;
+		return Formatter.print(id) + "\t\t" + name + "\t" + phoneNumber + "\t" + grade + "\t" + email;
 	}
 
 	public void update(String phoneNumber, String grade, String email) {
