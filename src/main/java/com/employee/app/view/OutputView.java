@@ -1,11 +1,9 @@
 package com.employee.app.view;
 
-import java.util.List;
-
-import com.employee.app.domain.Employee;
+import com.employee.app.domain.Employees;
 
 public interface OutputView {
-	void employeeList(List<Employee> employees);
-	void employeeDetailList(List<Employee> employees);
+	void employeeList(Employees employees);
+	void employeeDetailList(Employees employees);
 	void exitProgram();
 }

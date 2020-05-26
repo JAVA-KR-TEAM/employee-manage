@@ -1,23 +1,24 @@
 package com.employee.app.service;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.employee.app.domain.Employee;
+import com.employee.app.domain.Employees;
 import com.employee.app.domain.payload.EmployeePayload;
 import com.employee.app.utils.exception.EmployeeNotFoundException;
 
 class EmployeeServiceTest {
 	private EmployeeService employeeService;
+	private Employee saveEmployee;
 
 	@BeforeEach
 	void setUp() {
 		employeeService = new EmployeeServiceImpl();
-		employeeService.save(EmployeePayload.builder()
+		saveEmployee = employeeService.save(EmployeePayload.builder()
 			.name("문선민")
 			.email("sunmin@naver.com")
 			.grade("대리")
@@ -27,24 +28,26 @@ class EmployeeServiceTest {
 
 	@Test
 	void save() {
-		employeeService.save(EmployeePayload.builder()
+		EmployeePayload payload = EmployeePayload.builder()
 			.name("김철수")
 			.email("chulsu@naver.com")
 			.grade("차장")
 			.phoneNumber("010-1234-1234")
-			.build());
+			.build();
+		Employee employee = employeeService.save(payload);
+		assertThat(employee.getId()).isNotNull();
 	}
 
 	@Test
 	void findAll() {
-		List<Employee> employees = employeeService.findAll();
-		assertEquals(employees.size(), 1);
+		Employees employees = employeeService.findAll();
+		assertEquals(employees.numberOfEmployees(), 1);
 	}
 
 	@Test
 	void findById() {
 		Employee employee = employeeService.findById(1);
-		assertNotNull(employee);
+		assertThat(saveEmployee).isEqualTo(employee);
 	}
 
 	@Test
@@ -55,20 +58,26 @@ class EmployeeServiceTest {
 
 	@Test
 	void update() {
+		// given
 		String grade = "차장";
-		employeeService.update(1, EmployeePayload.builder()
+		EmployeePayload payload = EmployeePayload.builder()
 			.email("chulsu@naver.com")
 			.grade(grade)
 			.phoneNumber("010-1234-1234")
-			.build());
+			.build();
+
+		// when
+		employeeService.update(1, payload);
 		Employee employee = employeeService.findById(1);
+
+		// then
 		assertEquals(employee.getGrade(), grade);
 	}
 
 	@Test
 	void delete() {
 		employeeService.delete(1);
-		List<Employee> employees = employeeService.findAll();
-		assertEquals(employees.size(), 0);
+		Employees employees = employeeService.findAll();
+		assertEquals(employees.numberOfEmployees(), 0);
 	}
 }

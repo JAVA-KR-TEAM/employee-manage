@@ -1,9 +1,8 @@
 package com.employee.app.service;
 
-import java.util.List;
-
 import com.employee.app.domain.Employee;
 import com.employee.app.domain.EmployeeRepository;
+import com.employee.app.domain.Employees;
 import com.employee.app.domain.InMemoryEmployeeRepository;
 import com.employee.app.domain.payload.EmployeePayload;
 import com.employee.app.utils.exception.EmployeeNotFoundException;
@@ -16,13 +15,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public void save(EmployeePayload payload) {
-		repository.save(Employee.builder()
-			.name(payload.getName())
-			.grade(payload.getGrade())
-			.email(payload.getEmail())
-			.phoneNumber(payload.getPhoneNumber())
-			.build());
+	public Employee save(EmployeePayload payload) {
+		return repository.save(
+			new Employee(
+				payload.getName(),
+				payload.getGrade(),
+				payload.getEmail(),
+				payload.getPhoneNumber()));
 	}
 
 	@Override
@@ -32,8 +31,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public List<Employee> findAll() {
-		return repository.findAll();
+	public Employees findAll() {
+		return Employees.create(repository.findAll());
 	}
 
 	@Override
@@ -44,7 +43,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public void update(int employeeId, EmployeePayload payload) {
 		Employee employee = findById(employeeId);
-		employee.update(payload.getPhoneNumber(), payload.getGrade(), payload.getEmail());
+		employee.update(payload);
 		repository.save(employee);
 	}
 }

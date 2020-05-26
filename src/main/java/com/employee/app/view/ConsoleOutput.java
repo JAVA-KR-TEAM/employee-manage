@@ -1,27 +1,28 @@
 package com.employee.app.view;
 
-import java.util.List;
-
-import com.employee.app.domain.Employee;
+import com.employee.app.domain.Employees;
 
 public class ConsoleOutput implements OutputView {
+	private static final String lineBreak = "\n";
 
 	@Override
-	public void employeeList(List<Employee> employees) {
-		System.out.println();
-		System.out.println("직원번호   이름");
-		System.out.println("===============");
-		employees.stream().map(Employee::mapIdAndName).forEach(System.out::println);
-		System.out.println();
+	public void employeeList(Employees employees) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(lineBreak);
+		sb.append("직원번호   이름" + lineBreak);
+		sb.append("===============");
+		System.out.println(sb.toString());
+		employees.findEmployees();
 	}
 
 	@Override
-	public void employeeDetailList(List<Employee> employees) {
-		System.out.println();
-		System.out.println("직원번호   이름     전화번호      직급      이메일");
-		System.out.println("==================================================");
-		employees.stream().map(Employee::mapAllFields).forEach(System.out::println);
-		System.out.println();
+	public void employeeDetailList(Employees employees) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(lineBreak);
+		sb.append("직원번호   이름     전화번호      직급      이메일" + lineBreak);
+		sb.append("==================================================");
+		System.out.println(sb.toString());
+		employees.findDetailEmployees();
 	}
 
 	@Override

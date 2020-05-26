@@ -26,7 +26,7 @@ public class InMemoryEmployeeRepository implements EmployeeRepository {
 
 	@Override
 	public Employee save(Employee entity) {
-		if(entity.getId() == null) {
+		if (entity.getId() == null) {
 			entity.setId(incrementId);
 			incrementId++;
 		}

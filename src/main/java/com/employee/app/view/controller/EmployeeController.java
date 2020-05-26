@@ -61,11 +61,12 @@ public class EmployeeController {
 
 	private void updateEmployee() {
 		outputView.employeeDetailList(service.findAll());
-		service.update(inputView.inputEmployeeId(), EmployeePayload.builder()
-			.email(inputView.inputEmail())
-			.grade(inputView.inputGrade())
-			.phoneNumber(inputView.inputPhoneNumber())
-			.build());
+		service.update(inputView.inputEmployeeId(),
+			EmployeePayload.builder()
+				.email(inputView.inputEmail())
+				.grade(inputView.inputGrade())
+				.phoneNumber(inputView.inputPhoneNumber())
+				.build());
 	}
 
 	private void deleteEmployee() {

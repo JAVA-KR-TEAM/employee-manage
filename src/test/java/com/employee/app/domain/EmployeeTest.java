@@ -7,13 +7,22 @@ import org.junit.jupiter.api.Test;
 class EmployeeTest {
 
 	@Test
-	void canCreate() {
-		Employee employee = Employee.builder()
+	void compare_sameness_Employee() {
+		Employee excepted = Employee.builder()
+			.id(1)
 			.name("김철수")
 			.grade("차장")
 			.email("chulsu@naver.com")
 			.phoneNumber("010-1234-1234")
 			.build();
-		assertNotNull(employee);
+
+		Employee employee = Employee.builder()
+			.id(1)
+			.name("김철수")
+			.grade("차장")
+			.email("chulsu@naver.com")
+			.phoneNumber("010-1234-1234")
+			.build();
+		assertEquals(excepted, employee);
 	}
 }
