@@ -8,8 +8,8 @@ import com.employee.app.utils.exception.InvalidInputException;
 
 public class ConsoleInput implements InputView {
 	private static final Scanner SCANNER = new Scanner(System.in);
-	private static final String PHONE_NUMBER_REGEX = "^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}$";
-	private static final String EMAIL_REGEX = "(^[0-9a-zA-Z_-]+@[0-9a-zA-Z]+[.][a-zA-Z]{2,4}$)";
+	private static final Pattern PHONE_NUMBER_REGEX = Pattern.compile("^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}$");
+	private static final Pattern EMAIL_REGEX = Pattern.compile("(^[0-9a-zA-Z_-]+@[0-9a-zA-Z]+[.][a-zA-Z]{2,4}$)");
 
 	@Override
 	public String inputName() {
@@ -17,8 +17,8 @@ public class ConsoleInput implements InputView {
 		return SCANNER.nextLine();
 	}
 
-	private String validateInputInformation(String regex, String value) {
-		Matcher matcher = Pattern.compile(regex).matcher(value);
+	private String validateInputInformation(Pattern regex, String value) {
+		Matcher matcher = regex.matcher(value);
 		if(matcher.find())
 			return matcher.group();
 		throw new InvalidInputException();
