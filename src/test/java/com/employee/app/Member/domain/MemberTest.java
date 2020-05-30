@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MemberTest {
-    private static final long ID = 1L;
+    private static final String ID = "001";
     private static final String NAME = "JOHN";
     private static final String EMAIL = "test@test.com";
     private static final String PHONE = "010-0000-0000";

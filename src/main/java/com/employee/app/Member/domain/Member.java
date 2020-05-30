@@ -1,5 +1,6 @@
 package com.employee.app.Member.domain;
 
+import com.employee.app.dto.MemberDto;
 import lombok.Builder;
 
 import java.util.regex.Matcher;
@@ -18,17 +19,17 @@ public class Member {
     private static final String NOT_EMAIL_PATTERN = "이메일을 다시확인해주세요.";
     private static final String NOT_PHONE_PATTERN = "전호번호를 다시확인해주세요.";
 
-    private final Long id;
+    private final String id;
     private final String name;
     private final String email;
     private final String phone;
     private final Rank rank;
 
     public Member() {
-        this(null, null, null, null, null);
+        this(null, null,null, null, null);
     }
 
-    public Member(Long id, String name, String email, String phone, Rank rank) {
+    public Member(String id, String name, String email, String phone, Rank rank) {
         this.id = id;
         this.name = validateName(name);
         this.email = validateEmail(email);
