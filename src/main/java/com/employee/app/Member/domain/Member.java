@@ -5,6 +5,8 @@ import lombok.Builder;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static com.employee.app.utils.StringUtils.isBlank;
+
 @Builder
 public class Member {
     private static final Pattern NAME_PATTERN = Pattern.compile("[a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣\\s+]{1,10}");
@@ -15,12 +17,10 @@ public class Member {
     private static final String SPECIAL_CHARACTER_NOT_ALLOW = "한글,숫자,영문 10자 이내로 작성하여 주세요.";
     private static final String NOT_EMAIL_PATTERN = "이메일을 다시확인해주세요.";
     private static final String NOT_PHONE_PATTERN = "전호번호를 다시확인해주세요.";
+
     private final Long id;
-
     private final String name;
-
     private final String email;
-
     private final String phone;
     private final Rank rank;
 
