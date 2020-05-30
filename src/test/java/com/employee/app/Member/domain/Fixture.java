@@ -1,7 +1,5 @@
 package com.employee.app.Member.domain;
 
-import com.employee.app.dto.MemberDto;
-
 import java.util.Arrays;
 
 public class Fixture {
@@ -13,7 +11,7 @@ public class Fixture {
             .builder()
             .id("000")
             .name(new Name("홍길동"))
-            .email("test@aaa.com")
+            .email(new Email("test@test.com"))
             .rank(Rank.LEADER)
             .build();
 
@@ -21,7 +19,7 @@ public class Fixture {
             .builder()
             .id("001")
             .name(new Name("김유정"))
-            .email("test@aaa.com")
+            .email(new Email("test@test.com"))
             .rank(Rank.STAFF)
             .build();
 

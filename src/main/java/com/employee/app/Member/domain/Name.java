@@ -28,7 +28,7 @@ public class Name {
         return name;
     }
 
-    private Matcher getMatcher(final String name, final Pattern namePattern) {
-        return namePattern.matcher(name);
+    private Matcher getMatcher(final String name, final Pattern pattern) {
+        return pattern.matcher(name);
     }
 }
