@@ -23,7 +23,15 @@ public class Fixture {
             .rank(Rank.STAFF)
             .build();
 
-    public static Members twoMember() {
+    public static Member member3 = Member
+            .builder()
+            .id(new Id("002"))
+            .name(new Name("박보검"))
+            .email(new Email("test@test.com"))
+            .rank(Rank.PROFESSIONAL)
+            .build();
+
+    public static Members twoMembers() {
         return new Members(Arrays.asList(member1, member2));
     }
 

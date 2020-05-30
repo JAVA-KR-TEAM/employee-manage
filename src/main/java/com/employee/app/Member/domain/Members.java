@@ -29,4 +29,8 @@ public class Members {
     public void deleteMember(Member member) {
         this.members.remove(member);
     }
+
+    public int getMemberSize() {
+        return this.getMembers().size();
+    }
 }
