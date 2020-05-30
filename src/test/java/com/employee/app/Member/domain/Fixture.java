@@ -9,7 +9,7 @@ public class Fixture {
 
     public static Member member1 = Member
             .builder()
-            .id("000")
+            .id(new Id("000"))
             .name(new Name("홍길동"))
             .email(new Email("test@test.com"))
             .rank(Rank.LEADER)
@@ -17,7 +17,7 @@ public class Fixture {
 
     public static Member member2 = Member
             .builder()
-            .id("001")
+            .id(new Id("001"))
             .name(new Name("김유정"))
             .email(new Email("test@test.com"))
             .rank(Rank.STAFF)
