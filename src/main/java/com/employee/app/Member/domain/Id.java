@@ -1,6 +1,7 @@
 package com.employee.app.Member.domain;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
 import java.util.Objects;
 
@@ -8,6 +9,7 @@ import static com.employee.app.utils.StringUtils.isBlank;
 import static com.employee.app.utils.StringUtils.isGreaterThanMaximumId;
 
 @EqualsAndHashCode
+@Getter
 public class Id {
     private static final String NULL_NOT_ALLOW = "공백을 입력할 수 없습니다.";
     private static final int MAXIMUM_LENGTH = 3;

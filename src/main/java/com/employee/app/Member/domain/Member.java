@@ -6,8 +6,6 @@ import lombok.*;
 @Builder
 @EqualsAndHashCode
 @ToString
-@Getter
-@RequiredArgsConstructor
 public class Member {
     private Id id;
     private Name name;
@@ -15,7 +13,7 @@ public class Member {
     private Phone phone;
     private Rank rank;
 
-    public Member changeInformation(MemberDto memberDto) {
+    public Member updateInformation(MemberDto memberDto) {
         this.name = memberDto.getName();
         this.phone = memberDto.getPhone();
         this.email = memberDto.getEmail();
@@ -23,4 +21,25 @@ public class Member {
 
         return this;
     }
+
+    public String getId() {
+        return this.id.getId();
+    }
+
+    public String getEmail() {
+        return this.email.getEmail();
+    }
+
+    public String getPhone() {
+        return this.phone.getPhone();
+    }
+
+    public String getName() {
+        return this.name.getName();
+    }
+
+    public Rank getRank() {
+        return this.rank;
+    }
+
 }

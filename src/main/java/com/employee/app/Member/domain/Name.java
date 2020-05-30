@@ -1,6 +1,7 @@
 package com.employee.app.Member.domain;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
 import java.util.regex.Pattern;
 
@@ -8,6 +9,7 @@ import static com.employee.app.utils.StringUtils.isBlank;
 import static com.employee.app.utils.StringUtils.isPatternMatched;
 
 @EqualsAndHashCode
+@Getter
 public class Name {
     private static final String NULL_NOT_ALLOW = "공백을 입력할 수 없습니다.";
     private static final String SPECIAL_CHARACTER_NOT_ALLOW = "한글,숫자,영문 10자 이내로 작성하여 주세요.";

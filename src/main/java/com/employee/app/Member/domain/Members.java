@@ -26,5 +26,7 @@ public class Members {
         return new ArrayList<>(members);
     }
 
-
+    public void deleteMember(Member member) {
+        this.members.remove(member);
+    }
 }
