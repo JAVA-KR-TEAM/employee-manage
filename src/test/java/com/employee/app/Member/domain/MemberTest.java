@@ -4,6 +4,7 @@ import com.employee.app.dto.MemberDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static com.employee.app.Member.domain.Fixture.twoMembers;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
@@ -12,15 +13,11 @@ class MemberTest {
     @DisplayName("사용자 정보변경 테스트")
     @Test
     void testUpdate() {
-        Member expected = Member
-                .builder()
-                .id(new Id("000"))
-                .name(new Name("홍길동"))
-                .phone(new Phone("000-0000-0000"))
-                .email(new Email("test@test.com"))
-                .rank(Rank.LEADER)
-                .build();
+        // given
+        Members members = twoMembers();
+        Member expected = members.findMember("001");
 
+        // when
         Member actual = expected.updateInformation(MemberDto.builder()
                 .name(new Name("조정석"))
                 .phone(new Phone("010-1111-1111"))
@@ -28,6 +25,7 @@ class MemberTest {
                 .rank(Rank.MANAGER)
                 .build());
 
+        // then
         assertThat(actual).isNotNull();
         assertAll(
                 () -> assertThat(actual.getId()).isEqualTo(expected.getId()),
