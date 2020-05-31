@@ -2,6 +2,7 @@ package com.employee.app.view;
 
 import com.employee.app.Member.domain.*;
 import com.employee.app.dto.MemberDto;
+import com.employee.app.utils.StringUtils;
 
 import java.util.Scanner;
 
@@ -11,9 +12,9 @@ public class InputView {
 
     public static void askMemberInfo(Members members) {
         members.addMember(Member.builder()
-                .id(new Id("001"))
-                .phone(askMemberPhone())
+                .id(IdGenerator.generate())
                 .name(askMemberName())
+                .phone(askMemberPhone())
                 .email(askMemberEmail())
                 .rank(askMemberRank())
                 .build());
@@ -23,8 +24,8 @@ public class InputView {
         Member findMember = members.findMember(askMemberId());
         MemberDto changeMemberDto = MemberDto.builder()
                 .id(new Id(findMember.getId()))
-                .phone(askMemberPhone())
                 .name(askMemberName())
+                .phone(askMemberPhone())
                 .email(askMemberEmail())
                 .rank(askMemberRank())
                 .build();
@@ -49,7 +50,7 @@ public class InputView {
 
     public static String askMemberId() {
         System.out.println("사용자 아이디를 입력하세요");
-        return scanner.nextLine();
+        return StringUtils.getStringId(Integer.parseInt(scanner.nextLine()));
     }
 
     private static Phone askMemberPhone() {

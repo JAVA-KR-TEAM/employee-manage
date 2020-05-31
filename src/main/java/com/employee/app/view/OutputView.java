@@ -2,12 +2,11 @@ package com.employee.app.view;
 
 import com.employee.app.Member.domain.Members;
 
-import java.util.Objects;
-
 public class OutputView {
     private static final int MENU_END_NUMBER = 0;
     private static final String DASH = "============";
     public static final String TAB = "\t\t";
+    public static final String NOT_FOUND_USER = "사용자가 존재하지 않습니다.";
 
     public static void printConsole(Members members) {
         printSubMenu();
@@ -38,7 +37,6 @@ public class OutputView {
                 default:
                     throw new IllegalArgumentException("올바르지 않은 메뉴번호");
             }
-
             printSubMenu();
         }
     }
@@ -55,34 +53,37 @@ public class OutputView {
     }
 
     public static void printMembers(Members members) {
-        if (Objects.isNull(members)) {
-            throw new NullPointerException("존재하지않습니다.");
+        if (members.getMemberSize() == 0) {
+            System.out.println(NOT_FOUND_USER);
+            System.lineSeparator();
+        } else {
+            System.out.println();
+            System.out.println("직원번호" + TAB + "이름");
+            System.out.println(DASH);
+
+            members.getMembers().forEach(member -> {
+                System.out.println(member.getId() + TAB + member.getName());
+            });
         }
-
-        System.out.println();
-        System.out.println("직원번호" + TAB + "이름");
-        System.out.println(DASH);
-
-        members.getMembers().forEach(member -> {
-            System.out.println(member.getId() + TAB + member.getName());
-        });
     }
 
     public static void printMemberDetails(Members members) {
-        if (Objects.isNull(members)) {
-            throw new NullPointerException("존재하지않습니다.");
+        if ((members.getMemberSize() == 0)) {
+            System.out.println(NOT_FOUND_USER);
+            System.lineSeparator();
+        } else {
+            System.out.println();
+            System.out.println("직원번호\t 이름\t 전화번호\t 직급\t 이메일");
+            System.out.println("=======================================");
+
+            members.getMembers().forEach(member -> {
+                System.out.println(
+                        member.getId() + TAB + member.getName() + TAB +
+                                member.getPhone() + TAB + member.getRank().getValue() + TAB + member.getEmail()
+                );
+            });
         }
 
-        System.out.println();
-        System.out.println("직원번호\t 이름\t 전화번호\t 직급\t 이메일");
-        System.out.println("=======================================");
-
-        members.getMembers().forEach(member -> {
-            System.out.println(
-                    member.getId() + TAB + member.getName() + TAB +
-                    member.getPhone() + TAB + member.getRank().getValue() + TAB + member.getEmail()
-            );
-        });
     }
 
 }

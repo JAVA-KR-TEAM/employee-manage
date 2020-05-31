@@ -21,6 +21,16 @@ public class StringUtils {
         return false;
     }
 
+    public static String getStringId(int numberId) {
+        if (numberId < 10) {
+            return "00" + numberId;
+        } else if (numberId < 100) {
+            return "0" + numberId;
+        } else {
+            throw new IllegalArgumentException("사용가능한 범위를 넘었습니다.");
+        }
+    }
+
     public static Matcher isPatternMatched(final String name, final Pattern pattern) {
         return pattern.matcher(name);
     }
