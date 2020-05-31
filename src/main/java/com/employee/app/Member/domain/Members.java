@@ -9,6 +9,10 @@ public class Members {
 
     private List<Member> members;
 
+    public Members() {
+        this.members = new ArrayList<>();
+    }
+
     public Members(List<Member> members) {
         this.members = validateUsers(members);
     }

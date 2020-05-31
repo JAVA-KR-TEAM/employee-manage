@@ -42,17 +42,4 @@ public class Id {
             throw new NumberFormatException(NOT_ALLOWED_NUMBER);
         }
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Id)) return false;
-        Id id1 = (Id) o;
-        return Objects.equals(id, id1.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }

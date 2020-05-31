@@ -1,9 +1,14 @@
 package com.employee.app;
 
+import com.employee.app.Member.domain.Members;
+
+import static com.employee.app.view.OutputView.printConsole;
+
+
 public class Application {
 
     public static void main(String[] args) {
-        System.out.println("hello world");
-
+        Members members = new Members();
+        printConsole(members);
     }
 }
