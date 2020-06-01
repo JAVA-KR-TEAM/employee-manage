@@ -1,6 +1,6 @@
 package com.employee.app.Member.domain;
 
-import com.employee.app.dto.MemberVo;
+import com.employee.app.dto.EmployeeDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -19,8 +19,11 @@ class EmployeeTest {
 
         // when
         Employee actual = expected.updateInformation(
-                new MemberVo(new Id(expected.getId()), new Name("조정석"), new Email("aaa@aaa.com"),
-                        new Phone("010-1111-1111"), Rank.MANAGER));
+                EmployeeDto.builder().id(new Id(expected.getId()))
+                        .name(new Name("조정석"))
+                        .email(new Email("aaa@aaa.com"))
+                        .phone(new Phone("010-1111-1111"))
+                        .rank(Rank.MANAGER).build());
 
         // then
         assertThat(actual).isNotNull();
