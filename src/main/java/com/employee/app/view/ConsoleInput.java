@@ -46,12 +46,12 @@ public class ConsoleInput implements InputView {
 	public int inputMenuNumber() {
 		System.out.println("0 종료 1 입력 2 리스트 출력 3 상세 리스트 출력 4 수정 5 삭제");
 		System.out.print("수행할 작업:");
-		return Integer.parseInt(SCANNER.nextLine());
+		return Integer.parseUnsignedInt(SCANNER.nextLine());
 	}
 
 	@Override
 	public int inputEmployeeId() {
 		System.out.println("수정 혹은 삭제할 직원번호를 입력하세요:");
-		return Integer.parseInt(SCANNER.nextLine());
+		return Integer.parseUnsignedInt(SCANNER.nextLine());
 	}
 }
