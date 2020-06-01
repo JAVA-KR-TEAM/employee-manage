@@ -29,12 +29,12 @@ class EmployeeRepositoryTest {
 	@Test
 	void update() {
 		// given
-		String grade = "대리";
-		String phoneNumber = "010-1111-2222";
-		String email = "chulsu1@naver.com";
+		Grade grade = Grade.of("대리");
+		Phone phoneNumber = new Phone("010-1111-2222");
+		Email email = new Email("chulsu1@naver.com");
 		EmployeePayload payload = EmployeePayload.builder()
 			.grade(grade)
-			.phoneNumber(phoneNumber)
+			.phone(phoneNumber)
 			.email(email)
 			.build();
 
@@ -45,7 +45,7 @@ class EmployeeRepositoryTest {
 		// then
 		assertAll(
 			() -> assertEquals(saveEntity.getGrade(), grade),
-			() -> assertEquals(saveEntity.getPhoneNumber(), phoneNumber),
+			() -> assertEquals(saveEntity.getPhone(), phoneNumber),
 			() -> assertEquals(saveEntity.getEmail(), email)
 		);
 	}

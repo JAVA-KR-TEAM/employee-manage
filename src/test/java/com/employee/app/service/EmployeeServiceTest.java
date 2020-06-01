@@ -6,8 +6,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.employee.app.domain.Email;
 import com.employee.app.domain.Employee;
 import com.employee.app.domain.Employees;
+import com.employee.app.domain.Grade;
+import com.employee.app.domain.Name;
+import com.employee.app.domain.Phone;
 import com.employee.app.domain.payload.EmployeePayload;
 import com.employee.app.utils.exception.EmployeeNotFoundException;
 
@@ -19,20 +23,20 @@ class EmployeeServiceTest {
 	void setUp() {
 		employeeService = new EmployeeServiceImpl();
 		saveEmployee = employeeService.save(EmployeePayload.builder()
-			.name("문선민")
-			.email("sunmin@naver.com")
-			.grade("대리")
-			.phoneNumber("010-3234-5434")
+			.name(new Name("문선민"))
+			.phone(new Phone("010-2222-5512"))
+			.email(new Email("sunmin@naver.com"))
+			.grade(Grade.of("사원"))
 			.build());
 	}
 
 	@Test
 	void save() {
 		EmployeePayload payload = EmployeePayload.builder()
-			.name("김철수")
-			.email("chulsu@naver.com")
-			.grade("차장")
-			.phoneNumber("010-1234-1234")
+			.name(new Name("김철수"))
+			.email(new Email("chulsu@naver.com"))
+			.grade(Grade.of("차장"))
+			.phone(new Phone("010-1234-1234"))
 			.build();
 		Employee employee = employeeService.save(payload);
 		assertThat(employee.getId()).isNotNull();
@@ -52,18 +56,18 @@ class EmployeeServiceTest {
 
 	@Test
 	void findById_error() {
-		assertThrows(EmployeeNotFoundException.class,
-			() -> employeeService.findById(12));
+		assertThatExceptionOfType(EmployeeNotFoundException.class)
+			.isThrownBy(() -> employeeService.findById(12));
 	}
 
 	@Test
 	void update() {
 		// given
-		String grade = "차장";
+		Grade grade = Grade.of("대리");
 		EmployeePayload payload = EmployeePayload.builder()
-			.email("chulsu@naver.com")
+			.email(new Email("chulsu@naver.com"))
 			.grade(grade)
-			.phoneNumber("010-1234-1234")
+			.phone(new Phone("010-1234-1234"))
 			.build();
 
 		// when

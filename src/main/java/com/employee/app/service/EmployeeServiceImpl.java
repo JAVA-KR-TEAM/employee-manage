@@ -16,12 +16,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public Employee save(EmployeePayload payload) {
-		return repository.save(
-			new Employee(
-				payload.getName(),
-				payload.getGrade(),
-				payload.getEmail(),
-				payload.getPhoneNumber()));
+		return repository.save(Employee.builder()
+			.name(payload.getName())
+			.email(payload.getEmail())
+			.grade(payload.getGrade())
+			.phone(payload.getPhone())
+			.build());
 	}
 
 	@Override

@@ -1,45 +1,37 @@
 package com.employee.app.view;
 
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import com.employee.app.utils.exception.InvalidInputException;
+import com.employee.app.domain.Email;
+import com.employee.app.domain.Grade;
+import com.employee.app.domain.Name;
+import com.employee.app.domain.Phone;
 
 public class ConsoleInput implements InputView {
 	private static final Scanner SCANNER = new Scanner(System.in);
-	private static final Pattern PHONE_NUMBER_REGEX = Pattern.compile("^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}$");
-	private static final Pattern EMAIL_REGEX = Pattern.compile("(^[0-9a-zA-Z_-]+@[0-9a-zA-Z]+[.][a-zA-Z]{2,4}$)");
 
 	@Override
-	public String inputName() {
+	public Name inputName() {
 		System.out.println("이름을 입력하세요:");
-		return SCANNER.nextLine();
-	}
-
-	private String validateInputInformation(Pattern regex, String value) {
-		Matcher matcher = regex.matcher(value);
-		if(matcher.find())
-			return matcher.group();
-		throw new InvalidInputException();
+		return new Name(SCANNER.nextLine());
 	}
 
 	@Override
-	public String inputPhoneNumber() {
+	public Phone inputPhoneNumber() {
 		System.out.println("전화번호를 입력하세요:");
-		return validateInputInformation(PHONE_NUMBER_REGEX, SCANNER.nextLine());
+		return new Phone(SCANNER.nextLine());
 	}
 
 	@Override
-	public String inputEmail() {
+	public Email inputEmail() {
 		System.out.println("이메일을 입력하세요:");
-		return validateInputInformation(EMAIL_REGEX, SCANNER.nextLine());
+		return new Email(SCANNER.nextLine());
 	}
 
 	@Override
-	public String inputGrade() {
+	public Grade inputGrade() {
 		System.out.println("직급을 입력하세요:");
-		return SCANNER.nextLine();
+		return Grade.of(SCANNER.nextLine());
 	}
 
 	@Override

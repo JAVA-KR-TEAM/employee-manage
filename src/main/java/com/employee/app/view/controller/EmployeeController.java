@@ -54,7 +54,7 @@ public class EmployeeController {
 			.name(inputView.inputName())
 			.email(inputView.inputEmail())
 			.grade(inputView.inputGrade())
-			.phoneNumber(inputView.inputPhoneNumber())
+			.phone(inputView.inputPhoneNumber())
 			.build();
 		service.save(payload);
 	}
@@ -65,7 +65,7 @@ public class EmployeeController {
 			EmployeePayload.builder()
 				.email(inputView.inputEmail())
 				.grade(inputView.inputGrade())
-				.phoneNumber(inputView.inputPhoneNumber())
+				.phone(inputView.inputPhoneNumber())
 				.build());
 	}
 
