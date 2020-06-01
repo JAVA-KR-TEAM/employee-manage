@@ -1,5 +1,6 @@
 package com.employee.app.service;
 
+import static com.employee.app.domain.Fixture.*;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,7 +11,6 @@ import com.employee.app.domain.vo.Email;
 import com.employee.app.domain.Employee;
 import com.employee.app.domain.Employees;
 import com.employee.app.domain.vo.Grade;
-import com.employee.app.domain.vo.Name;
 import com.employee.app.domain.vo.Phone;
 import com.employee.app.domain.payload.EmployeePayload;
 import com.employee.app.utils.exception.EmployeeNotFoundException;
@@ -22,22 +22,36 @@ class EmployeeServiceTest {
 	@BeforeEach
 	void setUp() {
 		employeeService = new EmployeeServiceImpl();
-		saveEmployee = employeeService.save(EmployeePayload.builder()
-			.name(new Name("문선민"))
-			.phone(new Phone("010-2222-5512"))
-			.email(new Email("sunmin@naver.com"))
-			.grade(Grade.of("사원"))
-			.build());
+		saveEmployee = employeeService.save(createPayloadSunmin());
+	}
+
+	@Test
+	void update() {
+		// given
+		Grade grade = Grade.of("대리");
+		Email email = new Email("chulsu@naver.com");
+		Phone phone = new Phone("010-1234-1234");
+		EmployeePayload payload = EmployeePayload.builder()
+			.email(email)
+			.grade(grade)
+			.phone(phone)
+			.build();
+
+		// when
+		employeeService.update(1, payload);
+		Employee employee = employeeService.findById(1);
+
+		// then
+		assertAll(
+			() -> assertEquals(employee.getGrade(), grade),
+			() -> assertEquals(employee.getPhone(), phone),
+			() -> assertEquals(employee.getEmail(), email)
+		);
 	}
 
 	@Test
 	void save() {
-		EmployeePayload payload = EmployeePayload.builder()
-			.name(new Name("김철수"))
-			.email(new Email("chulsu@naver.com"))
-			.grade(Grade.of("차장"))
-			.phone(new Phone("010-1234-1234"))
-			.build();
+		EmployeePayload payload = createPayload();
 		Employee employee = employeeService.save(payload);
 		assertThat(employee.getId()).isNotNull();
 	}
@@ -58,24 +72,6 @@ class EmployeeServiceTest {
 	void findById_error() {
 		assertThatExceptionOfType(EmployeeNotFoundException.class)
 			.isThrownBy(() -> employeeService.findById(12));
-	}
-
-	@Test
-	void update() {
-		// given
-		Grade grade = Grade.of("대리");
-		EmployeePayload payload = EmployeePayload.builder()
-			.email(new Email("chulsu@naver.com"))
-			.grade(grade)
-			.phone(new Phone("010-1234-1234"))
-			.build();
-
-		// when
-		employeeService.update(1, payload);
-		Employee employee = employeeService.findById(1);
-
-		// then
-		assertEquals(employee.getGrade(), grade);
 	}
 
 	@Test
