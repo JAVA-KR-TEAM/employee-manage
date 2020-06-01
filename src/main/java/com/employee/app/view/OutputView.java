@@ -67,10 +67,7 @@ public class OutputView {
     }
 
     public static void printMembers(Employees employees) {
-        if (employees.getMemberSize() == 0) {
-            System.out.println(NOT_FOUND_USER);
-            System.lineSeparator();
-        } else {
+        if (hasEmployees(employees)) {
             System.out.println();
             System.out.println("직원번호" + TAB + "이름");
             System.out.println(DASH);
@@ -78,26 +75,29 @@ public class OutputView {
             employees.getEmployees().forEach(member -> {
                 System.out.println(member.getId() + TAB + member.getName());
             });
+        } else {
+            printNotFoundEmployee();
         }
     }
 
     public static void printMemberDetails(Employees employees) {
-        if ((employees.getMemberSize() == 0)) {
-            System.out.println(NOT_FOUND_USER);
-            System.lineSeparator();
-        } else {
+        if (hasEmployees(employees)) {
             System.out.println();
             System.out.println(DETAIL_MEMBER_MENU);
             System.out.println(LONG_DASH);
 
             employees.getEmployees().forEach(member -> {
-                System.out.println(
-                        member.getId() + TAB + member.getName() + TAB +
-                                member.getPhone() + TAB + member.getRank().getValue() + TAB + member.getEmail()
+                System.out.println( member.getId() + TAB + member.getName() +
+                        TAB + member.getPhone() + TAB + member.getRank().getValue() + TAB + member.getEmail()
                 );
             });
+        } else {
+            printNotFoundEmployee();
         }
+    }
 
+    private static boolean hasEmployees(Employees employees) {
+        return employees.getMemberSize() > 0;
     }
 
     private static boolean isExitNumber(int menuNumber) {
@@ -107,4 +107,8 @@ public class OutputView {
         return false;
     }
 
+    private static void printNotFoundEmployee() {
+        System.out.println(NOT_FOUND_USER);
+        System.lineSeparator();
+    }
 }
