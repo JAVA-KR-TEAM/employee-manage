@@ -18,12 +18,9 @@ class MemberTest {
         Member expected = members.findMember("001");
 
         // when
-        Member actual = expected.updateInformation(MemberVo.builder()
-                .name(new Name("조정석"))
-                .phone(new Phone("010-1111-1111"))
-                .email(new Email("aaa@aaa.com"))
-                .rank(Rank.MANAGER)
-                .build());
+        Member actual = expected.updateInformation(
+                new MemberVo(new Id(expected.getId()), new Name("조정석"), new Email("aaa@aaa.com"),
+                        new Phone("010-1111-1111"), Rank.MANAGER));
 
         // then
         assertThat(actual).isNotNull();

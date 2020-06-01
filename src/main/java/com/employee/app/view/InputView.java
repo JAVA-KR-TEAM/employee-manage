@@ -22,14 +22,8 @@ public class InputView {
 
     public static void updateMemberInfo(Members members) {
         Member findMember = members.findMember(askMemberId());
-        MemberVo changeMemberVo = MemberVo.builder()
-                .id(new Id(findMember.getId()))
-                .name(askMemberName())
-                .phone(askMemberPhone())
-                .email(askMemberEmail())
-                .rank(askMemberRank())
-                .build();
-
+        MemberVo changeMemberVo = new MemberVo(
+                new Id(findMember.getId()), askMemberName(), askMemberEmail(), askMemberPhone(), askMemberRank());
         findMember.updateInformation(changeMemberVo);
     }
 
