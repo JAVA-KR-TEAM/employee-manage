@@ -10,7 +10,7 @@ public class OutputView {
     private static final String NOT_MENU_NUMBER = "올바르지 않은 메뉴번호";
     private static final String DETAIL_MEMBER_MENU = "직원번호\t 이름\t 전화번호\t 직급\t 이메일";
     private static final String LONG_DASH = "=======================================";
-    private static final int ADD_MEMBER_MENU = 1;
+    private static final int ADD_MEMBER_NUMBER = 1;
     private static final int PRINT_MEMBER_NUMBER = 2;
     private static final int PRINT_MEMBER_DETAIL_NUMBER = 3;
     private static final int UPDATE_MEMBER_INFO_NUMBER = 4;
@@ -28,12 +28,12 @@ public class OutputView {
         while (true) {
             int menuNumber = InputView.askMenuNumber();
 
-            if (!(menuNumber != MENU_END_NUMBER)) {
+            if (isExitNumber(menuNumber)) {
                 break;
             }
 
             switch (menuNumber) {
-                case ADD_MEMBER_MENU:
+                case ADD_MEMBER_NUMBER:
                     InputView.askMemberInfo(members);
                     break;
                 case PRINT_MEMBER_NUMBER:
@@ -98,6 +98,13 @@ public class OutputView {
             });
         }
 
+    }
+
+    private static boolean isExitNumber(int menuNumber) {
+        if (!(menuNumber != MENU_END_NUMBER)) {
+            return true;
+        }
+        return false;
     }
 
 }
