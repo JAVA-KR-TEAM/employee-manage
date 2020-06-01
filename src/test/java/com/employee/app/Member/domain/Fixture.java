@@ -7,7 +7,7 @@ public class Fixture {
     private Fixture() {
     }
 
-    public static Member member1 = Member
+    public static Employee employee1 = Employee
             .builder()
             .id(new Id("000"))
             .name(new Name("홍길동"))
@@ -15,7 +15,7 @@ public class Fixture {
             .rank(Rank.LEADER)
             .build();
 
-    public static Member member2 = Member
+    public static Employee employee2 = Employee
             .builder()
             .id(new Id("001"))
             .name(new Name("김유정"))
@@ -23,7 +23,7 @@ public class Fixture {
             .rank(Rank.STAFF)
             .build();
 
-    public static Member member3 = Member
+    public static Employee employee3 = Employee
             .builder()
             .id(new Id("002"))
             .name(new Name("박보검"))
@@ -31,8 +31,8 @@ public class Fixture {
             .rank(Rank.PROFESSIONAL)
             .build();
 
-    public static Members twoMembers() {
-        return new Members(Arrays.asList(member1, member2));
+    public static Employees twoMembers() {
+        return new Employees(Arrays.asList(employee1, employee2));
     }
 
 }

@@ -8,17 +8,17 @@ import static com.employee.app.Member.domain.Fixture.twoMembers;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-class MemberTest {
+class EmployeeTest {
 
     @DisplayName("사용자 정보변경 테스트")
     @Test
     void testUpdate() {
         // given
-        Members members = twoMembers();
-        Member expected = members.findMember("001");
+        Employees employees = twoMembers();
+        Employee expected = employees.findMember("001");
 
         // when
-        Member actual = expected.updateInformation(
+        Employee actual = expected.updateInformation(
                 new MemberVo(new Id(expected.getId()), new Name("조정석"), new Email("aaa@aaa.com"),
                         new Phone("010-1111-1111"), Rank.MANAGER));
 

@@ -6,14 +6,14 @@ import lombok.*;
 @Builder
 @EqualsAndHashCode
 @ToString
-public class Member {
+public class Employee {
     private Id id;
     private Name name;
     private Email email;
     private Phone phone;
     private Rank rank;
 
-    public Member updateInformation(MemberVo memberVo) {
+    public Employee updateInformation(MemberVo memberVo) {
         this.name = memberVo.getName();
         this.phone = memberVo.getPhone();
         this.email = memberVo.getEmail();

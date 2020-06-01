@@ -1,6 +1,6 @@
 package com.employee.app.view;
 
-import com.employee.app.Member.domain.Members;
+import com.employee.app.Member.domain.Employees;
 
 public class OutputView {
     private static final int MENU_END_NUMBER = 0;
@@ -22,7 +22,7 @@ public class OutputView {
     private static final String SUBMENU_MEMBER_UPDATE = "4. 직원 정보 수정";
     private static final String SUBMENU_MEMBER_REMOVE = "5. 직원 정보 삭제";
 
-    public static void printConsole(Members members) {
+    public static void printConsole(Employees employees) {
         printSubMenu();
 
         while (true) {
@@ -34,19 +34,19 @@ public class OutputView {
 
             switch (menuNumber) {
                 case ADD_MEMBER_NUMBER:
-                    InputView.askMemberInfo(members);
+                    InputView.askMemberInfo(employees);
                     break;
                 case PRINT_MEMBER_NUMBER:
-                    printMembers(members);
+                    printMembers(employees);
                     break;
                 case PRINT_MEMBER_DETAIL_NUMBER:
-                    printMemberDetails(members);
+                    printMemberDetails(employees);
                     break;
                 case UPDATE_MEMBER_INFO_NUMBER:
-                    InputView.updateMemberInfo(members);
+                    InputView.updateMemberInfo(employees);
                     break;
                 case REMOVE_MEMBER_NUMBER:
-                    InputView.removeMember(members);
+                    InputView.removeMember(employees);
                     break;
                 default:
                     throw new IllegalArgumentException(NOT_MENU_NUMBER);
@@ -66,8 +66,8 @@ public class OutputView {
         System.out.println(sb.toString());
     }
 
-    public static void printMembers(Members members) {
-        if (members.getMemberSize() == 0) {
+    public static void printMembers(Employees employees) {
+        if (employees.getMemberSize() == 0) {
             System.out.println(NOT_FOUND_USER);
             System.lineSeparator();
         } else {
@@ -75,14 +75,14 @@ public class OutputView {
             System.out.println("직원번호" + TAB + "이름");
             System.out.println(DASH);
 
-            members.getMembers().forEach(member -> {
+            employees.getEmployees().forEach(member -> {
                 System.out.println(member.getId() + TAB + member.getName());
             });
         }
     }
 
-    public static void printMemberDetails(Members members) {
-        if ((members.getMemberSize() == 0)) {
+    public static void printMemberDetails(Employees employees) {
+        if ((employees.getMemberSize() == 0)) {
             System.out.println(NOT_FOUND_USER);
             System.lineSeparator();
         } else {
@@ -90,7 +90,7 @@ public class OutputView {
             System.out.println(DETAIL_MEMBER_MENU);
             System.out.println(LONG_DASH);
 
-            members.getMembers().forEach(member -> {
+            employees.getEmployees().forEach(member -> {
                 System.out.println(
                         member.getId() + TAB + member.getName() + TAB +
                                 member.getPhone() + TAB + member.getRank().getValue() + TAB + member.getEmail()

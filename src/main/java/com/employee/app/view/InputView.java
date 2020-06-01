@@ -10,8 +10,8 @@ public class InputView {
     private static final String MEMBER_NAME_QUESTION = "사용자 이름을 입력하세요";
     private static Scanner scanner = new Scanner(System.in);
 
-    public static void askMemberInfo(Members members) {
-        members.addMember(Member.builder()
+    public static void askMemberInfo(Employees employees) {
+        employees.addMember(Employee.builder()
                 .id(IdGenerator.generate())
                 .name(askMemberName())
                 .phone(askMemberPhone())
@@ -20,16 +20,16 @@ public class InputView {
                 .build());
     }
 
-    public static void updateMemberInfo(Members members) {
-        Member findMember = members.findMember(askMemberId());
+    public static void updateMemberInfo(Employees employees) {
+        Employee findEmployee = employees.findMember(askMemberId());
         MemberVo changeMemberVo = new MemberVo(
-                new Id(findMember.getId()), askMemberName(), askMemberEmail(), askMemberPhone(), askMemberRank());
-        findMember.updateInformation(changeMemberVo);
+                new Id(findEmployee.getId()), askMemberName(), askMemberEmail(), askMemberPhone(), askMemberRank());
+        findEmployee.updateInformation(changeMemberVo);
     }
 
-    public static void removeMember(Members members) {
-        Member findMember = members.findMember(askMemberId());
-        members.remove(findMember);
+    public static void removeMember(Employees employees) {
+        Employee findEmployee = employees.findMember(askMemberId());
+        employees.remove(findEmployee);
     }
 
     private static Name askMemberName() {
