@@ -3,6 +3,11 @@ package com.employee.app.domain;
 import java.util.Arrays;
 import java.util.List;
 
+import com.employee.app.domain.vo.Email;
+import com.employee.app.domain.vo.Grade;
+import com.employee.app.domain.vo.Name;
+import com.employee.app.domain.vo.Phone;
+
 public class Fixture {
 	private Fixture() {}
 

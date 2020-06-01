@@ -1,15 +1,17 @@
 package com.employee.app.domain;
 
 import com.employee.app.domain.payload.EmployeePayload;
+import com.employee.app.domain.vo.Email;
+import com.employee.app.domain.vo.Grade;
+import com.employee.app.domain.vo.Name;
+import com.employee.app.domain.vo.Phone;
 import com.employee.app.utils.format.Formatter;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.ToString;
 
 @Getter
 @Builder
-@ToString
 @EqualsAndHashCode(of = "id")
 public class Employee {
 	private Integer id;
@@ -27,7 +29,7 @@ public class Employee {
 	}
 
 	public String mapAllFields() {
-		return Formatter.print(id) + "\t\t" + name + "\t" + phone + "\t" + grade + "\t" + email;
+		return Formatter.print(id) + "\t\t" + name + "\t" + phone + "\t" + grade.getValue() + "\t" + email;
 	}
 
 	public void update(EmployeePayload payload) {

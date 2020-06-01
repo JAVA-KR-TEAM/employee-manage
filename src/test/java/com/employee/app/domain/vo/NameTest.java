@@ -1,4 +1,4 @@
-package com.employee.app.domain;
+package com.employee.app.domain.vo;
 
 import static org.assertj.core.api.Assertions.*;
 

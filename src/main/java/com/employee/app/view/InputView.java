@@ -1,9 +1,9 @@
 package com.employee.app.view;
 
-import com.employee.app.domain.Email;
-import com.employee.app.domain.Grade;
-import com.employee.app.domain.Name;
-import com.employee.app.domain.Phone;
+import com.employee.app.domain.vo.Email;
+import com.employee.app.domain.vo.Grade;
+import com.employee.app.domain.vo.Name;
+import com.employee.app.domain.vo.Phone;
 
 public interface InputView {
 	Name inputName();

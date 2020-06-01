@@ -6,12 +6,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.employee.app.domain.Email;
+import com.employee.app.domain.vo.Email;
 import com.employee.app.domain.Employee;
 import com.employee.app.domain.Employees;
-import com.employee.app.domain.Grade;
-import com.employee.app.domain.Name;
-import com.employee.app.domain.Phone;
+import com.employee.app.domain.vo.Grade;
+import com.employee.app.domain.vo.Name;
+import com.employee.app.domain.vo.Phone;
 import com.employee.app.domain.payload.EmployeePayload;
 import com.employee.app.utils.exception.EmployeeNotFoundException;
 

@@ -4,6 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import com.employee.app.domain.vo.Email;
+import com.employee.app.domain.vo.Grade;
+import com.employee.app.domain.vo.Name;
+import com.employee.app.domain.vo.Phone;
+
 class EmployeeTest {
 
 	@Test

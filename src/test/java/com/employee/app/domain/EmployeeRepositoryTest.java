@@ -10,6 +10,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.employee.app.domain.payload.EmployeePayload;
+import com.employee.app.domain.vo.Email;
+import com.employee.app.domain.vo.Grade;
+import com.employee.app.domain.vo.Phone;
 
 class EmployeeRepositoryTest {
 	private EmployeeRepository repository;

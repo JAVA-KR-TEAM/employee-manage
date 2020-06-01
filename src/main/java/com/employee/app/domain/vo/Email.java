@@ -1,4 +1,4 @@
-package com.employee.app.domain;
+package com.employee.app.domain.vo;
 
 import java.util.regex.Pattern;
 

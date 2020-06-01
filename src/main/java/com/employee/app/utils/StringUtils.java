@@ -12,12 +12,6 @@ public class StringUtils {
 		return value.trim().isEmpty();
 	}
 
-	public static boolean isGreaterThanMaximumId(String value, int maximum) {
-		if (value.length() > maximum)
-			return true;
-		return false;
-	}
-
 	public static Matcher isPatternMatched(String value, Pattern pattern) {
 		return pattern.matcher(value);
 	}
