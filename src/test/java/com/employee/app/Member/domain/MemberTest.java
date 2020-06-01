@@ -1,6 +1,6 @@
 package com.employee.app.Member.domain;
 
-import com.employee.app.dto.MemberDto;
+import com.employee.app.dto.MemberVo;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +18,7 @@ class MemberTest {
         Member expected = members.findMember("001");
 
         // when
-        Member actual = expected.updateInformation(MemberDto.builder()
+        Member actual = expected.updateInformation(MemberVo.builder()
                 .name(new Name("조정석"))
                 .phone(new Phone("010-1111-1111"))
                 .email(new Email("aaa@aaa.com"))

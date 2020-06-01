@@ -6,7 +6,7 @@ import lombok.Getter;
 
 @Builder
 @Getter
-public class MemberDto {
+public class MemberVo {
     private final Id id;
     private final Name name;
     private final Email email;

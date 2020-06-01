@@ -1,6 +1,6 @@
 package com.employee.app.Member.domain;
 
-import com.employee.app.dto.MemberDto;
+import com.employee.app.dto.MemberVo;
 import lombok.*;
 
 @Builder
@@ -13,11 +13,11 @@ public class Member {
     private Phone phone;
     private Rank rank;
 
-    public Member updateInformation(MemberDto memberDto) {
-        this.name = memberDto.getName();
-        this.phone = memberDto.getPhone();
-        this.email = memberDto.getEmail();
-        this.rank = memberDto.getRank();
+    public Member updateInformation(MemberVo memberVo) {
+        this.name = memberVo.getName();
+        this.phone = memberVo.getPhone();
+        this.email = memberVo.getEmail();
+        this.rank = memberVo.getRank();
 
         return this;
     }

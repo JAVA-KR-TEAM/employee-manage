@@ -1,7 +1,7 @@
 package com.employee.app.view;
 
 import com.employee.app.Member.domain.*;
-import com.employee.app.dto.MemberDto;
+import com.employee.app.dto.MemberVo;
 import com.employee.app.utils.StringUtils;
 
 import java.util.Scanner;
@@ -22,7 +22,7 @@ public class InputView {
 
     public static void updateMemberInfo(Members members) {
         Member findMember = members.findMember(askMemberId());
-        MemberDto changeMemberDto = MemberDto.builder()
+        MemberVo changeMemberVo = MemberVo.builder()
                 .id(new Id(findMember.getId()))
                 .name(askMemberName())
                 .phone(askMemberPhone())
@@ -30,7 +30,7 @@ public class InputView {
                 .rank(askMemberRank())
                 .build();
 
-        findMember.updateInformation(changeMemberDto);
+        findMember.updateInformation(changeMemberVo);
     }
 
     public static void removeMember(Members members) {
